@@ -1,0 +1,4 @@
+io\helidon\examples\controllers\BookRepository.class
+io\helidon\examples\pojo\Book.class
+io\helidon\examples\controllers\BookResources.class
+io\helidon\examples\quickstart\mp\MyResource.class

@@ -1,0 +1,11 @@
+javax.sql.DataSource:
+  bookDataSource:
+    dataSourceClassName: com.mysql.cj.jdbc.MysqlDataSource
+    dataSource:
+      URL: jdbc:mysql://localhost:3306/mysql_oracle
+      user: root
+      password: C1g2b3u#
+
+# oradcle.jdbc.driver.oracleDriver
+#jdbc:oracle:thin:@localhost:1521:xe
+# oracle.jdbc.pool.OracleDataSource
