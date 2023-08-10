@@ -9,3 +9,31 @@ javax.sql.DataSource:
 # oradcle.jdbc.driver.oracleDriver
 #jdbc:oracle:thin:@localhost:1521:xe
 # oracle.jdbc.pool.OracleDataSource
+
+server:
+  port: 8081
+  host: localhost
+  sockets:
+    health:
+      port: 9090
+      bin-address: localhost
+health:
+  routing: "health"
+  web-context: "myhealth"
+
+
+# tracing:
+#   service: "helidon-Introduction"
+#   host: "jaeger"
+#   port: 14250
+
+# metrics:
+#   enabled: false
+
+# metrics:
+#   enabled: true
+#   registries:
+#   -type: 
+#       application :
+#         filter: 
+#           exclude: myapp\.supplier

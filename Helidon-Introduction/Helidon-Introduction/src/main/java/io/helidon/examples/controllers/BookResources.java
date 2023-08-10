@@ -16,6 +16,11 @@ import jakarta.ws.rs.core.*;
 
 import java.util.*;
 
+import org.eclipse.microprofile.metrics.MetricUnits;
+import org.eclipse.microprofile.metrics.annotation.Counted;
+import org.eclipse.microprofile.metrics.annotation.Metered;
+import org.eclipse.microprofile.metrics.annotation.Timed;
+
 import io.helidon.examples.pojo.Book;
 
 
@@ -133,6 +138,9 @@ public class BookResources {
 	
 	@GET
 	@Path("/isbn/{isbn}")
+	@Counted(name = "isbn-hit", description = "cunting num of requests", absolute = true)
+	@Metered(name = "isbn-meter", absolute = true, unit = MetricUnits.PER_SECOND)
+	@Timed(name = "isbn-Timer", absolute = true, unit = MetricUnits.MILLISECONDS)
 	public Response readBook(@PathParam("isbn") int isbn) {
 		
 		Book book=repository.findBookByISBN(isbn);
@@ -151,6 +159,7 @@ public class BookResources {
 	}
 	
 	@GET
+	@io.micrometer.core.annotation.Counted(value = "micro-counted")
 	@Path("/isbn/{isbn}/{name}")
 	public Book readBook(@PathParam("isbn") int isbn, @PathParam("name") String name) {
 		return new Book(isbn, name, 12001);
