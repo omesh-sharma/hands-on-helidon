@@ -23,6 +23,18 @@ import org.eclipse.microprofile.metrics.annotation.Timed;
 
 import io.helidon.examples.pojo.Book;
 
+import org.eclipse.microprofile.openapi.annotations.Operation;
+import org.eclipse.microprofile.openapi.annotations.enums.SchemaType;
+import org.eclipse.microprofile.openapi.annotations.media.Content;
+import org.eclipse.microprofile.openapi.annotations.media.Schema;
+
+import org.eclipse.microprofile.openapi.annotations.parameters.RequestBody;
+import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
+import org.eclipse.microprofile.openapi.annotations.responses.APIResponses;
+
+import org.eclipse.microprofile.openapi.annotations.media.ExampleObject;
+
+import org.eclipse.microprofile.openapi.annotations.media.ExampleObject;
 
 @Path("/books")
 @RequestScoped
@@ -47,6 +59,8 @@ public class BookResources {
 //	public Book readBook(@DefaultValue("green")  @QueryParam("name") String name) {
 //		return new Book(100, name , 23232);
 //	}
+	
+	
 	
 	
 	
@@ -168,6 +182,17 @@ public class BookResources {
 	
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
+	@APIResponses({
+			@APIResponse(name = "book_isbn_available", responseCode = "200", description = "Book with isbn found"),
+			@APIResponse(name = "book_isbn_unavailable", responseCode = "204", description = "Book with isbn NOT found") }
+	)
+
+	@RequestBody(name = "book", description = "adding book",
+	content = @Content(mediaType = "application/json",
+	schema = @Schema(implementation = Book.class),
+//	schema = @Schema(type = SchemaType.OBJECT, requiredProperties = {
+//			"greeting" },
+	examples = @ExampleObject(name = "bookName", summary = "name to add")))
 	public Response postBook(Book book) {
 		
 		Book book_saved = repository.createBook(book);

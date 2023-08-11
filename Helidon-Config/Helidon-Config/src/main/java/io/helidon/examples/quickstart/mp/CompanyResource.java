@@ -3,6 +3,7 @@ package io.helidon.examples.quickstart.mp;
 import org.eclipse.microprofile.config.inject.ConfigProperties;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
+import io.helidon.security.annotations.Authenticated;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
@@ -34,6 +35,7 @@ public class CompanyResource {
 
 	
 	@GET
+	@Authenticated
 	@Path("/config")
 	public DemoConfig getCompanyConfigDetails()
 	{

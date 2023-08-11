@@ -26,6 +26,15 @@
             <artifactId>helidon-microprofile-openapi</artifactId>
         </dependency>
         <dependency>
+			<groupId>io.helidon.integrations.openapi-ui</groupId>
+			<artifactId>helidon-integrations-openapi-ui</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>io.helidon.microprofile.bundles</groupId>
+			<artifactId>helidon-microprofile-core</artifactId>
+		</dependency>
+        <dependency>
             <groupId>org.eclipse.microprofile.metrics</groupId>
             <artifactId>microprofile-metrics-api</artifactId>
         </dependency>
@@ -125,6 +134,11 @@
 		<dependency>
 			<groupId>io.helidon.tracing</groupId>
 			<artifactId>helidon-tracing-zipkin</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>io.helidon.examples</groupId>
+			<artifactId>Consumer</artifactId>
+			<version>1.0-SNAPSHOT</version>
 		</dependency>
     </dependencies>
 

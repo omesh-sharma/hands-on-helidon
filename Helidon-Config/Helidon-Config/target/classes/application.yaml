@@ -1,3 +1,35 @@
-mp:
-  config:
-    profile: test
+# mp:
+#   config:
+#     profile: test
+
+# security:
+#   jersey:
+#     enabled: true
+#   config.require-encryption: false
+#   providers:
+#   - http-basic-auth:
+#       realm : "helidon"
+#       users :
+#       - login : user1
+#         password : "user1"
+#         roles : ["user"]
+#       - login : admin
+#         password : "admin"
+#         roles : ["admin"]
+#       - login : both
+#         password : "both"
+#         roles : ["user","admin"]
+
+security:
+  jersey:
+    enabled: true
+  config.require-encryption: false
+  providers:
+    - oidc:
+          redirect-uri: "/oidc/redirect"
+          audience: "account"
+          client-id: "y_client"   
+          header-use: true
+          client-secret: "USeT8NKyLusrL4v2lAtCB3pJLvHBfwPO"
+          identity-uri: "http://localhost:8080/realms/Omeshream"
+          frontend-uri: "http://localhost:8085"
